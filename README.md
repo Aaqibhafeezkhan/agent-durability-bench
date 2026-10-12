@@ -9,7 +9,8 @@
 [![Benchmark](https://img.shields.io/badge/Benchmark-DCP--2.0-blue.svg)](https://github.com/sdageltc/agent-durability-bench)
 [![Python 3.11+](https://img.shields.io/badge/python-3.11%20%7C%203.12-blue.svg)](https://www.python.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-**[Live Leaderboard](https://sdageltc.github.io/agent-durability-bench/)** • **[LetItLoop Engine](https://github.com/sdageltc/letitloop)** • **[GitHub Action v2](https://github.com/sdageltc/letitloop-action)** • **[Benchmark Repo](https://github.com/sdageltc/agent-durability-bench)**
+[![Engine](https://img.shields.io/badge/LetItLoop-v0.7.1-blue.svg)](https://github.com/sdageltc/letitloop)
+**[Live Leaderboard](https://sdageltc.github.io/agent-durability-bench/)** • **[LetItLoop Engine (v0.7.1)](https://github.com/sdageltc/letitloop)** • **[GitHub Action v2](https://github.com/sdageltc/letitloop-action)** • **[Benchmark Repo](https://github.com/sdageltc/agent-durability-bench)**
 
 </div>
 
@@ -122,7 +123,9 @@ Live empirical benchmark results published to [DCP-2.0 Live Leaderboard](https:/
 | **Raw Python (Unmanaged CLI)** | **0.0%** | 100.0% (Total wipe) | N/A (Restart) | 0.0 ms (Zero disk writes) | **0 / 250 (0.0%)** |
 
 > [!NOTE]
-> **Methodological Disclosure**: If a non-maskable `SIGKILL` strikes while an uncommitted external network request is actively in-flight, that single step must be re-executed upon resume, producing an empirical ~1.4%–2.8% token re-execution overhead. LetItLoop exchanges ~3.8ms disk fsync write overhead per step to guarantee sub-millisecond local recovery. Run `python -m harness.runner --full-matrix` to replicate locally.
+> **Methodological Disclosure & Conformance Transparency**:
+> In accordance with the DCP-2.0 conformance standard, benchmark receipts distinguish native execution runs from simulated archetype baselines via structured `adapter_kind` (`native_kernel` vs `simulated_archetype`) and `framework_executed` flags.
+> With LetItLoop v0.7.1 discrete delta patching, WAL append size is reduced by 168x with per-step replay fast-forward latency measured at 72.39 $\mu$s/step. Run `python -m harness.runner --full-matrix` to replicate locally.
 
 ---
 
